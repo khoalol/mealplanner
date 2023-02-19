@@ -1,0 +1,33 @@
+{% extends 'meal_planner/base.html' %}
+
+{% block title %}
+Meal Plans
+{% endblock %}
+
+{% block content %}
+<h1>Meal Plans</h1>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for meal_plan in object_list %}
+<tr>
+<td>{{ meal_plan.name }}</td>
+<td>{{ meal_plan.start_date }}</td>
+<td>{{ meal_plan.end_date }}</td>
+<td>
+<a href="{% url 'meal_plan_detail' pk=meal_plan.pk %}">View</a> 
+<a href="{% url 'meal_plan_update' pk=meal_plan.pk %}">Edit</a> 
+<a href="{% url 'meal_plan_delete' pk=meal_plan.pk %}">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
